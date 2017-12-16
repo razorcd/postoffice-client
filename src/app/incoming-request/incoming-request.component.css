@@ -35,13 +35,13 @@
 }
 
 .incoming-request .incoming-request-value .incoming-request-submenu-key {
-    max-width: 150px;
+    max-width: 250px;
     /* background: green; */
     float: left;
     font-weight: bold;    
 }
 .incoming-request .incoming-request-value .incoming-request-submenu-value {
-    max-width: calc(100% - 150px);
+    max-width: calc(100% - 250px);
     /* background: blue; */
     float: left;
 }
