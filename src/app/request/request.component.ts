@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../request.service';
+import { IncomingRequest } from './incomingRequest';
 
 @Component({
   selector: 'requests',
@@ -7,7 +8,7 @@ import { RequestService } from '../request.service';
   styleUrls: ['./request.component.css']
 })
 export class RequestComponent implements OnInit {
-  requests: any[];
+  incomingRequests: IncomingRequest[];
 
   constructor(private requestService: RequestService) { }
 
@@ -18,6 +19,8 @@ export class RequestComponent implements OnInit {
 
   getRequests() {
     this.requestService.getRequests()
-    .subscribe(requests => this.requests = requests);
+    .subscribe((incomingRequests:IncomingRequest[]) => {
+      this.incomingRequests = incomingRequests;
+    });
   }
 }

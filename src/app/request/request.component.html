@@ -1,4 +1,9 @@
 <p>
-  Requests: <br/>
-  {{requests | json}}
+  Requestsss: <br/>
+  {{incomingRequests | json}}
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <incoming-request *ngFor="let ir of incomingRequests" [incomingRequest]="ir"></incoming-request>
 </p>

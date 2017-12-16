@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
+import { IncomingRequest } from './request/incomingRequest';
 
 @Injectable()
 export class RequestService {
@@ -13,8 +14,8 @@ export class RequestService {
   constructor(private http: HttpClient) {
   }
 
-  getRequests():Observable<Request[]> {
-    return this.http.get<Request[]>(this.requestUrl)
+  getRequests():Observable<IncomingRequest[]> {
+    return this.http.get<IncomingRequest[]>(this.requestUrl)
 //      .pipe(
 //        tap(request => this.log('fetched requests')),
 //        catchError(this.handleError('gotRequests', []))

@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { RequestComponent } from './request/request.component';
 
 import { RequestService } from './request.service';
+import { IncomingRequestComponent } from './incoming-request/incoming-request.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RequestComponent
+    RequestComponent,
+    IncomingRequestComponent
   ],
   imports: [
     BrowserModule,
