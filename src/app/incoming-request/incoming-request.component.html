@@ -1,4 +1,75 @@
-<p>
-  incoming-request works!
-  {{ incomingRequest | json }}
-</p>
+<div class="incoming-request">
+
+  <!-- id -->
+  <div class="incoming-request-row">
+    <div class="incoming-request-key">id:</div>
+    <div class="incoming-request-value"> {{incomingRequest.id}} </div>       
+    <div style="clear: both"></div>  
+  </div>
+
+  <!-- url -->
+  <div class="incoming-request-row">
+    <div class="incoming-request-key">url:</div>
+    <div class="incoming-request-value"> {{incomingRequest.url}} </div>       
+    <div style="clear: both"></div>  
+  </div>
+  
+  <!-- method -->
+  <div class="incoming-request-row">
+    <div class="incoming-request-key">method:</div>
+    <div class="incoming-request-value"> {{incomingRequest.method}} </div>       
+    <div style="clear: both"></div>  
+  </div>
+
+  <!-- params -->
+  <div class="incoming-request-row">
+    <div class="incoming-request-key">params:</div>
+    <div class="incoming-request-value">
+      <div *ngFor="let key of objectKeys(incomingRequest.params)">
+        <div class="incoming-request-submenu-key">{{ key }}:</div>
+        <div class="incoming-request-submenu-value">{{ incomingRequest.params[key] | json }}</div>
+        <div style="clear: both"></div>
+      </div>
+    </div>       
+    <div style="clear: both"></div>  
+  </div>
+
+  <!-- headers -->
+  <div class="incoming-request-row">
+    <div class="incoming-request-key">headers:</div>
+    <div class="incoming-request-value">
+      <div *ngFor="let key of objectKeys(incomingRequest.headers)">
+        <div class="incoming-request-submenu-key">{{ key }}:</div>
+        <div class="incoming-request-submenu-value">{{ incomingRequest.headers[key] }}</div>
+        <div style="clear: both"></div>
+      </div>
+    </div>       
+    <div style="clear: both"></div>  
+  </div>
+
+  <!-- cookies -->
+  <div class="incoming-request-row">
+    <div class="incoming-request-key">cookies:</div>
+    <div class="incoming-request-value">
+      <div *ngFor="let cookie of incomingRequest.cookies" class="incoming-request-cookie">    
+
+        <div *ngFor="let key of objectKeys(cookie)">
+          <div class="incoming-request-submenu-key">{{ key }}:</div>
+          <div class="incoming-request-submenu-value">{{ cookie[key] }}</div>
+          <div style="clear: both"></div>
+        </div>
+      </div>
+
+    </div>       
+    <div style="clear: both"></div>  
+  </div>
+
+  <!-- body -->
+  <div class="incoming-request-row">
+    <div class="incoming-request-key">body:</div> 
+    <div class="incoming-request-value"> {{incomingRequest.body}} </div>       
+    <div style="clear: both"></div>  
+  </div>
+
+  <div style="clear: both"></div>
+</div>

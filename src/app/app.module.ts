@@ -7,6 +7,9 @@ import { RequestComponent } from './request/request.component';
 
 import { RequestService } from './request.service';
 import { IncomingRequestComponent } from './incoming-request/incoming-request.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InputTextModule, ButtonModule, DataTableModule, DialogModule, PanelModule }  from 'primeng/primeng';
+
 
 @NgModule({
   declarations: [
@@ -15,8 +18,14 @@ import { IncomingRequestComponent } from './incoming-request/incoming-request.co
     IncomingRequestComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    InputTextModule, 
+    ButtonModule,
+    DataTableModule, 
+    PanelModule,
+    DialogModule
   ],
   providers: [
     RequestService

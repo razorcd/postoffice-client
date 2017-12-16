@@ -8,6 +8,8 @@ import { IncomingRequest } from '../request/incomingRequest';
 })
 export class IncomingRequestComponent implements OnInit {
 
+  objectKeys = Object.keys;
+
   @Input() public incomingRequest:IncomingRequest;
 
   constructor() { }

@@ -14,7 +14,9 @@ export class RequestComponent implements OnInit {
 
   ngOnInit() {
     this.getRequests();
-    setInterval(() => { this.getRequests(); }, 5000);
+    // setInterval(() => { 
+    //   this.getRequests(); 
+    // }, 5000);
   }
 
   getRequests() {
