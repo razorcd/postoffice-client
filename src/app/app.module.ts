@@ -5,7 +5,7 @@ import { HttpClientModule }    from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { RequestComponent } from './request/request.component';
 
-import { RequestService } from './request.service';
+import { RequestService } from './services/request.service';
 import { IncomingRequestComponent } from './incoming-request/incoming-request.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputTextModule, ButtonModule, DataTableModule, DialogModule, PanelModule }  from 'primeng/primeng';

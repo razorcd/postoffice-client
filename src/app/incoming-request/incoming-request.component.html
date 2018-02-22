@@ -7,7 +7,7 @@
     [requestMethod]="incomingRequest.method"
     [requestTimestamp]="incomingRequest.timestamp"></incoming-request-header>
 
-  <div class="incoming-request-details" *ngIf="incomingRequestDetailsVisible[incomingRequest.id]">
+  <div class="incoming-request-details" *ngIf="detailsVisible">
     <!-- id -->
     <div class="incoming-request-row">
       <div class="incoming-request-key">id:</div>
@@ -33,7 +33,7 @@
     <div class="incoming-request-row">
       <div class="incoming-request-key">params:</div>
       <div class="incoming-request-value">
-        <div *ngFor="let key of objectKeys(incomingRequest.params)">
+        <div *ngFor="let key of getObjectKeys(incomingRequest.params)">
           <div class="incoming-request-submenu-key">{{ key }}:</div>
           <div class="incoming-request-submenu-value">{{ incomingRequest.params[key] | json }}</div>
           <div style="clear: both"></div>
@@ -46,7 +46,7 @@
     <div class="incoming-request-row">
       <div class="incoming-request-key">headers:</div>
       <div class="incoming-request-value">
-        <div *ngFor="let key of objectKeys(incomingRequest.headers)">
+        <div *ngFor="let key of getObjectKeys(incomingRequest.headers)">
           <div class="incoming-request-submenu-key">{{ key }}:</div>
           <div class="incoming-request-submenu-value">{{ incomingRequest.headers[key] }}</div>
           <div style="clear: both"></div>
@@ -61,7 +61,7 @@
       <div class="incoming-request-value">
         <div *ngFor="let cookie of incomingRequest.cookies" class="incoming-request-cookie">
 
-          <div *ngFor="let key of objectKeys(cookie)">
+          <div *ngFor="let key of getObjectKeys(cookie)">
             <div class="incoming-request-submenu-key">{{ key }}:</div>
             <div class="incoming-request-submenu-value">{{ cookie[key] }}</div>
             <div style="clear: both"></div>
