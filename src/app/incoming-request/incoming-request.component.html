@@ -2,12 +2,13 @@
 
   <!--header-->
   <incoming-request-header
-    (click)="toggleDetailsVisible(incomingRequest.id)"
+    (click)="toggleDetailsVisibility(incomingRequest.id)"
     [requestUrl]="incomingRequest.url"
     [requestMethod]="incomingRequest.method"
     [requestTimestamp]="incomingRequest.timestamp"></incoming-request-header>
 
-  <div class="incoming-request-details" *ngIf="detailsVisible">
+  <!--incomingRequest details-->
+  <div class="incoming-request-details" *ngIf="detailsVisibility">
     <!-- id -->
     <div class="incoming-request-row">
       <div class="incoming-request-key">id:</div>

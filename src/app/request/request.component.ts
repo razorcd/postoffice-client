@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../services/request.service';
 import { IncomingRequest } from '../models/incomingRequest';
-import {DetailsVisible} from "./DetailsVisible";
+import { VisibilityOfRequestDetails } from "./VisibilityOfRequestDetails";
 import {log} from "util";
 
 @Component({
@@ -11,7 +11,7 @@ import {log} from "util";
 })
 export class RequestComponent implements OnInit {
   incomingRequests: IncomingRequest[];
-  public incomingRequestDetailsVisible:Map<String,boolean> = new Map<String, boolean>();
+  public incomingRequestDetailsVisibility:Map<String,boolean> = new Map<String, boolean>();
 
   constructor(private requestService: RequestService) { }
 
@@ -30,11 +30,11 @@ export class RequestComponent implements OnInit {
   }
 
   /**
-   * Stores incomingRequest details visibility by incomingRequest id.
-   * @param {DetailsVisible} the new incomngRequest id and visibility
+   * Stores a incomingRequest details visibility by incomingRequest id.
+   * @param {VisibilityOfRequestDetails} the new incomingRequest id and it's visibility
    */
-  onDetailsVisibleToggle($event:DetailsVisible) {
-    log("Received even: ", $event);
-    this.incomingRequestDetailsVisible.set($event.getId(), $event.getDetailsVisible());
+  onVisibilityOfRequestDetailsToggle($event:VisibilityOfRequestDetails) {
+    log("VisibilityOfRequestDetails even received: ", $event);
+    this.incomingRequestDetailsVisibility.set($event.getId(), $event.getVisibility());
   }
 }

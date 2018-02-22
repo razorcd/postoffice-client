@@ -1,5 +1,5 @@
 <incoming-request
   *ngFor="let ir of incomingRequests" [incomingRequest]="ir"
-  [detailsVisible]="incomingRequestDetailsVisible.get(ir.id)"
-  (detailsVisibleEmitter)="onDetailsVisibleToggle($event)"
+  [detailsVisibility]="incomingRequestDetailsVisibility.get(ir.id)"
+  (detailsVisibilityEmitter)="onVisibilityOfRequestDetailsToggle($event)"
 ></incoming-request>

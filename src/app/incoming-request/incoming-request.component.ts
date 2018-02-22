@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IncomingRequest } from '../models/incomingRequest';
-import {DetailsVisible} from "../request/DetailsVisible";
+import {VisibilityOfRequestDetails} from "../request/VisibilityOfRequestDetails";
 
 @Component({
   selector: 'incoming-request',
@@ -12,8 +12,8 @@ export class IncomingRequestComponent implements OnInit {
   getObjectKeys = Object.keys;
 
   @Input() public incomingRequest:IncomingRequest;
-  @Input() public detailsVisible:boolean;
-  @Output() detailsVisibleEmitter: EventEmitter<Map<String,boolean>> = new EventEmitter();
+  @Input() public detailsVisibility:boolean;
+  @Output() detailsVisibilityEmitter: EventEmitter<Map<String,boolean>> = new EventEmitter();
 
   constructor() { }
 
@@ -21,12 +21,12 @@ export class IncomingRequestComponent implements OnInit {
   }
 
   /**
-   * Toggles the visibility of the detailed element of incoming-request
-   * @param {String} id of incoming request
+   * Toggles the visibility of the details of current incomingRequest
+   * @param {String} id of incomingRequest
    */
-  toggleDetailsVisible(id:String) {
-    this.detailsVisible = !this.detailsVisible;
-    let tempDetailsVisible:DetailsVisible = new DetailsVisible(id, !!this.detailsVisible);
-    this.detailsVisibleEmitter.emit(tempDetailsVisible);
+  toggleDetailsVisibility(id:String) {
+    this.detailsVisibility = !this.detailsVisibility;
+    let tempDetailsVisible:Deta = new VisibilityOfRequestDetails(id, this.detailsVisibility);
+    this.detailsVisibilityEmitter.emit(tempDetailsVisible);
   }
 }

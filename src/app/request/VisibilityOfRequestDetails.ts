@@ -1,8 +1,8 @@
 
 
-export class DetailsVisible {
+export class VisibilityOfRequestDetails {
   private _id:String;
-  private _detailsVisible:boolean;
+  private _visibility:boolean;
 
   /**
    * Creates a key,value object to hold information if a incoming-request details view is visible or not.
@@ -11,9 +11,9 @@ export class DetailsVisible {
    * @detailsVisible[boolean] the visibility of the details
    * @returns[DetailsVisible] instance
    */
-  constructor(id: String, detailsVisible: boolean) {
+  constructor(id: String, visibility: boolean) {
     this._id = id;
-    this._detailsVisible = detailsVisible;
+    this._visibility = visibility;
   }
 
   getId(): String {
@@ -24,11 +24,11 @@ export class DetailsVisible {
     this._id = value;
   }
 
-  getDetailsVisible(): boolean {
-    return this._detailsVisible;
+  getVisibility(): boolean {
+    return this._visibility;
   }
 
-  setDetailsVisible(value: boolean) {
-    this._detailsVisible = value;
+  setVisibility(value: boolean) {
+    this._visibility = value;
   }
 }
