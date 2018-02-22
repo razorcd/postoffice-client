@@ -5,6 +5,10 @@
   font-family: monospace;
   margin: 10px;
 
+  incoming-request-header {
+    cursor: pointer;
+  }
+
   .incoming-request-row {
     width:100%;
     margin: 10px;

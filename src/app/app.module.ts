@@ -9,21 +9,24 @@ import { RequestService } from './request.service';
 import { IncomingRequestComponent } from './incoming-request/incoming-request.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputTextModule, ButtonModule, DataTableModule, DialogModule, PanelModule }  from 'primeng/primeng';
+import { IncmingRequestHeaderComponent } from './incming-request-header/incming-request-header.component';
+import { IncomingRequestHeaderComponent } from './incoming-request-header/incoming-request-header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RequestComponent,
-    IncomingRequestComponent
+    IncomingRequestComponent,
+    IncomingRequestHeaderComponent
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
-    InputTextModule, 
+    InputTextModule,
     ButtonModule,
-    DataTableModule, 
+    DataTableModule,
     PanelModule,
     DialogModule
   ],
