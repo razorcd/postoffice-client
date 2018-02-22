@@ -1,4 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
+import { TimeAgoPipe } from "./pipes/timeAgo.pipe";
+
 
 @Component({
   selector: 'incoming-request-header',

@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputTextModule, ButtonModule, DataTableModule, DialogModule, PanelModule }  from 'primeng/primeng';
 import { IncmingRequestHeaderComponent } from './incming-request-header/incming-request-header.component';
 import { IncomingRequestHeaderComponent } from './incoming-request-header/incoming-request-header.component';
+import { TimeAgoPipe } from "./pipes/timeAgo.pipe";
+import { TimeISOPipe } from "./pipes/timeISO.pipe";
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { IncomingRequestHeaderComponent } from './incoming-request-header/incomi
     AppComponent,
     RequestComponent,
     IncomingRequestComponent,
-    IncomingRequestHeaderComponent
+    IncomingRequestHeaderComponent,
+    TimeAgoPipe,
+    TimeISOPipe
   ],
   imports: [
     BrowserAnimationsModule,

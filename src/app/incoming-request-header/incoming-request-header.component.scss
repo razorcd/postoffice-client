@@ -21,12 +21,14 @@
 
   .incoming-request-header-timestamp {
     background: hotpink;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .incoming-request-header-method { flex: 1 10%; }
-  .incoming-request-header-url    { flex: 3 60% }
-  .incoming-request-header-timestamp { flex: 1 30%; }
+  .incoming-request-header-url    { flex: 3 75% }
+  .incoming-request-header-timestamp { flex: 1 15%; }
 
   .incoming-request-header-method { order: 1; }
   .incoming-request-header-url    { order: 2; }

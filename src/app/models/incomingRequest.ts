@@ -8,4 +8,5 @@ export class IncomingRequest {
   headers: Map<string, string>;
   cookies: Cookie[];
   body: string;
+  timestamp: Date;
 }
