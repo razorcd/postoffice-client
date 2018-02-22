@@ -1,0 +1,34 @@
+.incoming-request-header {
+  display: flex;
+  flex-flow: row wrap;
+
+  & > * {
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .incoming-request-header-url {
+    background: deepskyblue;
+    word-break:break-all;
+  }
+
+  .incoming-request-header-method {
+    background: gold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .incoming-request-header-timestamp {
+    background: hotpink;
+
+  }
+
+  .incoming-request-header-method { flex: 1 10%; }
+  .incoming-request-header-url    { flex: 3 60% }
+  .incoming-request-header-timestamp { flex: 1 30%; }
+
+  .incoming-request-header-method { order: 1; }
+  .incoming-request-header-url    { order: 2; }
+  .incoming-request-header-timestamp { order: 3; }
+}
