@@ -9,4 +9,6 @@ export class IncomingRequest {
   cookies: Cookie[];
   body: string;
   timestamp: number;
+
+  // TODO: setters and getters
 }
