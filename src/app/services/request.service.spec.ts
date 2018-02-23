@@ -2,21 +2,16 @@ import 'rxjs/add/operator/toPromise';
 
 import {IncomingRequest} from "../models/incomingRequest";
 import {RequestService} from "./request.service";
-import {HttpClient} from "@angular/common/http/src/client";
+import {HttpClient} from "@angular/common/http";
 import { Observable } from 'rxjs/Observable';
 import "rxjs/add/observable/of"
+import createSpy = jasmine.createSpy;
 
 describe('RequestService (mockBackend)', () => {
   let service:RequestService;
   let incomingRequestsList:IncomingRequest[];
 
-  let fakeHttp:HttpClient = <any>{
-    get:()=>{},
-    post:()=>{},
-    put:()=>{},
-    patch:()=>{},
-    delete:()=>{}
-  };
+  let fakeHttp:HttpClient = new HttpClient(null);
 
   beforeEach(() => {
     service = new RequestService(fakeHttp);
