@@ -68,7 +68,7 @@ describe('RequestComponent', () => {
 
     //prepare different data
     getRequestsSpy.and.returnValue(Observable.of([incomingRequest, incomingRequest]));
-    jasmine.clock().tick(5000);  // fast forward time
+    jasmine.clock().tick(5100);  // fast forward time
     fixture.detectChanges();
 
     //check number of elements
