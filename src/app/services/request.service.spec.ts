@@ -1,15 +1,41 @@
-import { TestBed, inject } from '@angular/core/testing';
+import 'rxjs/add/operator/toPromise';
 
-import { RequestService } from './request.service';
+import {IncomingRequest} from "../models/incomingRequest";
+import {RequestService} from "./request.service";
+import {HttpClient} from "@angular/common/http/src/client";
+import { Observable } from 'rxjs/Observable';
+import "rxjs/add/observable/of"
 
-describe('RequestService', () => {
+describe('RequestService (mockBackend)', () => {
+  let service:RequestService;
+  let incomingRequestsList:IncomingRequest[];
+
+  let fakeHttp:HttpClient = <any>{
+    get:()=>{},
+    post:()=>{},
+    put:()=>{},
+    patch:()=>{},
+    delete:()=>{}
+  };
+
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [RequestService]
-    });
+    service = new RequestService(fakeHttp);
+    incomingRequestsList = [new IncomingRequest(), new IncomingRequest()];
   });
 
-  it('should be created', inject([RequestService], (service: RequestService) => {
-    expect(service).toBeTruthy();
-  }));
+
+  it('can instanciate service when inject service', () => {
+    expect(service instanceof RequestService).toBe(true);
+  });
+
+  it('#getRequests should get a list of IncomingRequest', () => {
+    spyOn(fakeHttp, 'get').and.returnValue(Observable.of(incomingRequestsList));
+
+    service.getRequests().subscribe(result => {
+      expect(result).toBe(incomingRequestsList);
+    });
+
+    expect(fakeHttp.get).toHaveBeenCalledTimes(1);
+  });
+
 });
