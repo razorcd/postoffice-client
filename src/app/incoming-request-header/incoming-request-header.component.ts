@@ -9,7 +9,7 @@ export class IncomingRequestHeaderComponent implements OnInit {
 
   @Input() public requestMethod:String;
   @Input() public requestUrl:String;
-  @Input() public requestTimestamp:String;
+  @Input() public requestTimestamp:number;
 
   constructor() { }
 
