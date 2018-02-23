@@ -1,17 +1,17 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from "@angular/core";
+import {By} from "@angular/platform-browser";
+import {Observable} from "rxjs/Observable";
+import "rxjs/add/observable/of";
 
 import {RequestComponent} from './request.component';
 import {RequestService} from "../services/request.service";
-import {IncomingRequestComponent} from "../incoming-request/incoming-request.component";
-import {IncomingRequestHeaderComponent} from "../incoming-request-header/incoming-request-header.component";
-import {TimeISOPipe} from "../pipes/timeISO.pipe";
-import {TimeAgoPipe} from "../pipes/timeAgo.pipe";
-import {HttpClient, HttpHandler} from "@angular/common/http";
-import {Observable} from "rxjs/Observable";
-import "rxjs/add/observable/of";
 import {IncomingRequest} from "../models/incomingRequest";
-import {By} from "@angular/platform-browser";
-import {DebugElement} from "@angular/core";
+
+// mocked RequestService
+class MockRequestService {
+  getRequests() {}
+}
 
 describe('RequestComponent', () => {
   let component: RequestComponent;
@@ -22,8 +22,9 @@ describe('RequestComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RequestComponent, IncomingRequestComponent, IncomingRequestHeaderComponent, TimeISOPipe, TimeAgoPipe ],
-      providers: [RequestService, HttpClient, HttpHandler]
+      declarations: [ RequestComponent ],
+      providers: [{provide: RequestService, useClass: MockRequestService}],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA] // ignore subcomponents
     })
     .compileComponents();
   }));
@@ -32,13 +33,9 @@ describe('RequestComponent', () => {
     fixture = TestBed.createComponent(RequestComponent);
     component = fixture.componentInstance;
     requestService = TestBed.get(RequestService);
-
     incomingRequest = new IncomingRequest();
-    incomingRequest.id = "111";
-    incomingRequest.method = "POST";
-    incomingRequest.url = "http://urlExample";
-    incomingRequest.timestamp = Date.now();
   });
+
 
   it('should create', () => {
     spyOn(requestService, 'getRequests').and.returnValue(Observable.of([]));
@@ -56,7 +53,7 @@ describe('RequestComponent', () => {
     expect(requestService.getRequests).toHaveBeenCalledTimes(1);
   });
 
-  it('should update number of elements in reatime', () => {
+  it('should update number of elements in realtime', () => {
     jasmine.clock().install();  // set time mock
     let getRequestsSpy:jasmine.Spy = spyOn(requestService, 'getRequests').and.returnValue(Observable.of([]));
 
@@ -69,6 +66,7 @@ describe('RequestComponent', () => {
     //prepare different data
     getRequestsSpy.and.returnValue(Observable.of([incomingRequest, incomingRequest]));
     jasmine.clock().tick(5100);  // fast forward time
+
     fixture.detectChanges();
 
     //check number of elements
@@ -78,4 +76,5 @@ describe('RequestComponent', () => {
     expect(requestService.getRequests).toHaveBeenCalledTimes(2);
     jasmine.clock().uninstall(); // release time mock
   });
+
 });
