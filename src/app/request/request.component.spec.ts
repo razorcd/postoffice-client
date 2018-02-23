@@ -24,7 +24,7 @@ describe('RequestComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ RequestComponent ],
       providers: [{provide: RequestService, useClass: MockRequestService}],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA] // ignore subcomponents
+      schemas: [CUSTOM_ELEMENTS_SCHEMA] // ignore subcomponents with dashes
     })
     .compileComponents();
   }));

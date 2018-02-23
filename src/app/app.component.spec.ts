@@ -12,7 +12,7 @@ describe('AppComponent', () => {
         AppComponent
       ],
       providers: [],
-      schemas: [NO_ERRORS_SCHEMA] // ignore subcomponents
+      schemas: [NO_ERRORS_SCHEMA] // ignore all subcomponents
     }).compileComponents();
   }));
 
