@@ -5,23 +5,24 @@
   & > * {
     padding: 10px;
     box-sizing: border-box;
+    display: flex;
+    user-select: none;
   }
 
   .incoming-request-header-url {
     background: deepskyblue;
     word-break:break-all;
+    align-items: center;
   }
 
   .incoming-request-header-method {
     background: gold;
-    display: flex;
     justify-content: center;
     align-items: center;
   }
 
   .incoming-request-header-timestamp {
     background: hotpink;
-    display: flex;
     justify-content: center;
     align-items: center;
   }

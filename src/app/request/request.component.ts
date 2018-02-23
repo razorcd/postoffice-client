@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../services/request.service';
 import { IncomingRequest } from '../models/incomingRequest';
 import { VisibilityOfRequestDetails } from "./VisibilityOfRequestDetails";
-import {log} from "util";
 
-const REQUESTER_INTERVAL:number = 5000; // in ms
+const REQUESTER_INTERVAL:number = 3000; // in ms
 
 @Component({
   selector: 'requests',
@@ -36,8 +35,7 @@ export class RequestComponent implements OnInit {
    * @param {VisibilityOfRequestDetails} the new incomingRequest id and it's visibility
    */
   onVisibilityOfRequestDetailsToggle($event:VisibilityOfRequestDetails) {
-    log("VisibilityOfRequestDetails even received: ");
-    log($event);
+    console.log("VisibilityOfRequestDetails even received: ", $event);
     this.incomingRequestDetailsVisibility.set($event.getId(), $event.getVisibility());
   }
 
@@ -47,6 +45,7 @@ export class RequestComponent implements OnInit {
   private startRealTimeRequester() {
     this.getRequests();
     setInterval(() => {
+      console.log("Tick: requesting IncomingRequests");
       this.getRequests();
     }, REQUESTER_INTERVAL);
   }

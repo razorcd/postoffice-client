@@ -1,17 +1,14 @@
-import 'rxjs/add/operator/toPromise';
-
 import {IncomingRequest} from "../models/incomingRequest";
 import {RequestService} from "./request.service";
 import {HttpClient} from "@angular/common/http";
-import { Observable } from 'rxjs/Observable';
-import "rxjs/add/observable/of"
-import createSpy = jasmine.createSpy;
+import {Observable} from 'rxjs/Observable';
+import "rxjs/add/observable/of";
 
-describe('RequestService (mockBackend)', () => {
-  let service:RequestService;
-  let incomingRequestsList:IncomingRequest[];
+describe('RequestService', () => {
+  let service: RequestService;
+  let incomingRequestsList: IncomingRequest[];
 
-  let fakeHttp:HttpClient = new HttpClient(null);
+  let fakeHttp: HttpClient = new HttpClient(null);
 
   beforeEach(() => {
     service = new RequestService(fakeHttp);
@@ -19,7 +16,7 @@ describe('RequestService (mockBackend)', () => {
   });
 
 
-  it('can instanciate service when inject service', () => {
+  it('can instantiate service when inject service', () => {
     expect(service instanceof RequestService).toBe(true);
   });
 
