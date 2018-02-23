@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IncomingRequest } from '../models/incomingRequest';
-import {VisibilityOfRequestDetails} from "../request/VisibilityOfRequestDetails";
+import { VisibilityOfRequestDetails } from "../request/VisibilityOfRequestDetails";
 
 @Component({
   selector: 'incoming-request',
@@ -13,7 +13,7 @@ export class IncomingRequestComponent implements OnInit {
 
   @Input() public incomingRequest:IncomingRequest;
   @Input() public detailsVisibility:boolean;
-  @Output() detailsVisibilityEmitter: EventEmitter<Map<String,boolean>> = new EventEmitter();
+  @Output() public detailsVisibilityEmitter: EventEmitter<VisibilityOfRequestDetails> = new EventEmitter();
 
   constructor() { }
 
@@ -26,7 +26,7 @@ export class IncomingRequestComponent implements OnInit {
    */
   toggleDetailsVisibility(id:String) {
     this.detailsVisibility = !this.detailsVisibility;
-    let tempDetailsVisible:Deta = new VisibilityOfRequestDetails(id, this.detailsVisibility);
+    let tempDetailsVisible:VisibilityOfRequestDetails = new VisibilityOfRequestDetails(id, this.detailsVisibility);
     this.detailsVisibilityEmitter.emit(tempDetailsVisible);
   }
 }
