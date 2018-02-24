@@ -3,7 +3,7 @@ import { RequestService } from '../services/request.service';
 import { IncomingRequest } from '../models/incomingRequest';
 import { VisibilityOfRequestDetails } from "./VisibilityOfRequestDetails";
 
-const REQUESTER_INTERVAL:number = 50000; // in ms
+const REQUESTER_INTERVAL:number = 5000; // in ms
 
 @Component({
   selector: 'requests',
