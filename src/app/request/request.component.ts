@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { RequestService } from '../services/request.service';
 import { IncomingRequest } from '../models/incomingRequest';
 import { VisibilityOfRequestDetails } from "./VisibilityOfRequestDetails";
@@ -15,7 +15,7 @@ export class RequestComponent implements OnInit {
   private incomingRequestDetailsVisibility:Map<String,boolean> = new Map<String, boolean>();
   private setIntervalRequests:any;
 
-  constructor(private requestService: RequestService) { }
+  constructor(private requestService: RequestService, private _ngZone: NgZone) { }
 
   ngOnInit():void {
     this.startRealTimeRequester();
@@ -49,10 +49,16 @@ export class RequestComponent implements OnInit {
    */
   private startRealTimeRequester():void {
     this.getRequests();
-    this.setIntervalRequests = setInterval(() => {
-      console.log("Tick: requesting IncomingRequests");
-      this.getRequests();
-    }, REQUESTER_INTERVAL);
+
+    this._ngZone.runOutsideAngular(() => { // Changes here will not propagate into your view.
+      setInterval(() => {
+        this._ngZone.run(() => { // Run inside the ngZone to trigger change detection.
+          console.log("Tick: requesting IncomingRequests");
+          this.getRequests();
+        });
+      }, REQUESTER_INTERVAL);
+    });
+
   }
 
   /**
