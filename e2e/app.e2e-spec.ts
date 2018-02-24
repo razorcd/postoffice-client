@@ -7,8 +7,8 @@ describe('postbox-client App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display main page message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getParagraphText()).toEqual('API Inspector');
   });
 });
