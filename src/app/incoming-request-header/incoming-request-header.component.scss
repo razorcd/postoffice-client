@@ -1,3 +1,5 @@
+@import "../../styles.scss";
+
 .incoming-request-header {
   display: flex;
   flex-flow: row wrap;
@@ -6,7 +8,7 @@
     padding: 10px;
     box-sizing: border-box;
     display: flex;
-    user-select: none;
+    @include user-select(none);
   }
 
   .incoming-request-header-url {

@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+
+@mixin user-select($select) {
+  -webkit-touch-callout:#{$select};
+  @each $pre in -webkit-, -moz-, -ms-, -o-, -khtml- {
+    #{$pre + user-select}: #{$select};
+  }
+  #{user-select}: #{$select};
+}
