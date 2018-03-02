@@ -1,6 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from "@angular/forms";
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 
@@ -10,6 +11,7 @@ import {AppComponent} from './app.component';
 import {IncomingRequestComponent} from './incoming-request/incoming-request.component';
 import {IncomingRequestHeaderComponent} from './incoming-request-header/incoming-request-header.component';
 import {LoginComponent} from './login/login.component';
+import {NavigationComponent} from './navigation/navigation.component';
 import {RequestComponent} from './request/request.component';
 
 import {TimeAgoPipe} from "./pipes/timeAgo.pipe";
@@ -17,8 +19,7 @@ import {TimeISOPipe} from "./pipes/timeISO.pipe";
 
 import {AuthenticationService} from './services/authentication.service';
 import {RequestService} from './services/request.service';
-import {FormsModule} from "@angular/forms";
-import { NavigationComponent } from './navigation/navigation.component';
+import {UnauthorizedInterceptor} from "./unauthorized.interceptor";
 
 const routes:Routes = [
   { path: '', pathMatch: 'full', redirectTo: "/requests"},
@@ -34,11 +35,11 @@ const routes:Routes = [
     IncomingRequestComponent,
     IncomingRequestHeaderComponent,
     LoginComponent,
+    NavigationComponent,
 
     //pipes
     TimeAgoPipe,
     TimeISOPipe,
-    NavigationComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -53,8 +54,12 @@ const routes:Routes = [
     DialogModule
   ],
   providers: [
+    //services
     AuthenticationService,
-    RequestService
+    RequestService,
+
+    //interceptors
+    { provide: HTTP_INTERCEPTORS, useClass: UnauthorizedInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
