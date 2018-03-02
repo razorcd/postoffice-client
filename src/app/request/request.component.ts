@@ -10,7 +10,7 @@ const REQUESTER_INTERVAL:number = 5000; // in ms
   templateUrl: './request.component.html',
   styleUrls: ['./request.component.css']
 })
-export class RequestComponent implements OnInit {
+export class RequestComponent implements OnInit, OnDestroy {
   private incomingRequests:IncomingRequest[];
   private incomingRequestDetailsVisibility:Map<String,boolean> = new Map<String, boolean>();
   private setIntervalRequests:any;
@@ -51,7 +51,7 @@ export class RequestComponent implements OnInit {
     this.getRequests();
 
     this._ngZone.runOutsideAngular(() => { // Changes here will not propagate into your view.
-      setInterval(() => {
+      this.setIntervalRequests = setInterval(() => {
         this._ngZone.run(() => { // Run inside the ngZone to trigger change detection.
           console.log("Tick: requesting IncomingRequests");
           this.getRequests();

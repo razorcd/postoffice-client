@@ -1,5 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<app-navigation></app-navigation>
 <div >
+  <h1>Principal: {{principal | json}}</h1>
   <h1 style="text-align:center">API Inspector</h1>
 
   <h2 style="text-align:center">An application that will assist you in debugging your http API requests.</h2>
@@ -9,6 +11,6 @@
   <h3>Soon we will also support uploading files.</h3>
   <h3>All the successful requests will get a response status 204 No Content.</h3>
 
-  <requests></requests>
+  <router-outlet></router-outlet>
 
 </div>

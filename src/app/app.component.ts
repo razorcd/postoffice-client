@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {AuthenticationService} from "./services/authentication.service";
+import {Principal} from "./models/Principal";
 
 @Component({
   selector: 'app-root',
@@ -6,4 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  public principal:Principal = null;
+
+  constructor(private authService:AuthenticationService) {
+    authService.getPrincipal().then((principal:Principal) => {
+      this.principal = principal;
+    });
+  }
 }
