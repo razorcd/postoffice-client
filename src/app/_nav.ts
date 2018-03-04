@@ -1,12 +1,12 @@
 export const navigation = [
   {
     name: 'Requests',
-    url: '/requests',
+    url: '/dashboard/requests',
     icon: 'icon-speedometer'
   },
   {
     name: 'Filters',
-    url: '/filters',
+    url: '/dashboard/filters',
     icon: 'icon-pencil'
   },
   {

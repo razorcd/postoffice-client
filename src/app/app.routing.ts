@@ -14,7 +14,7 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: '',
+    path: 'dashboard',
     component: DashboardLayoutComponent,
     data: {
       title: 'Home'
@@ -39,7 +39,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: './views/pages/pages.module#PagesModule',
+        loadChildren: './core/pages/pages.module#PagesModule',
       }
     ]
   }
