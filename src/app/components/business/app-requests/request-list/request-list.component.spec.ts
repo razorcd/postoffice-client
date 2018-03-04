@@ -5,8 +5,8 @@ import {Observable} from "rxjs/Observable";
 import "rxjs/add/observable/of";
 
 import {RequestListComponent} from './request-list.component';
-import {RequestService} from "../../../services/request.service";
-import {IncomingRequest} from "../../../models/incomingRequest";
+import {RequestService} from "../../../../services/request.service";
+import {IncomingRequest} from "../../../../models/incomingRequest";
 
 // mocked RequestService
 class MockRequestService {

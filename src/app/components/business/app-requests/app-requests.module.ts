@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 import {
   TimeAgoPipe, 
   TimeISOPipe
-} from '../../pipes';
+} from '../../../pipes/index';
 
 @NgModule({
   imports: [

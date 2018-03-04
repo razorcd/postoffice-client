@@ -9,6 +9,8 @@ import {AuthenticationService} from './services/authentication.service';
 import {RequestService} from './services/request.service';
 import {UnauthorizedInterceptor} from "./interceptors/unauthorized.interceptor";
 
+import {AppStructureModule} from "./components/app-structure/app-structure.module";
+
 // Import containers
 import {
   FullLayoutComponent,
@@ -18,38 +20,11 @@ import {
 const APP_CONTAINERS = [
   FullLayoutComponent,
   SimpleLayoutComponent
-]
-
-
-// Import components
-import {
-  AppBreadcrumbsComponent,
-  AppFooterComponent,
-  AppHeaderComponent,
-  AppSidebarComponent,
-  AppSidebarFooterComponent,
-  AppSidebarFormComponent,
-  AppSidebarHeaderComponent,
-  AppSidebarMinimizerComponent,
-  APP_SIDEBAR_NAV,
-  APP_REQUESTS
-} from './components';
-
-const APP_COMPONENTS = [
-  AppBreadcrumbsComponent,
-  AppFooterComponent,
-  AppHeaderComponent,
-  AppSidebarComponent,
-  AppSidebarFooterComponent,
-  AppSidebarFormComponent,
-  AppSidebarHeaderComponent,
-  AppSidebarMinimizerComponent,
-  APP_SIDEBAR_NAV
 ];
 
 // Import pipes
 import {
-  TimeAgoPipe, 
+  TimeAgoPipe,
   TimeISOPipe
 } from './pipes';
 
@@ -71,7 +46,7 @@ const APP_DIRECTIVES = [
   NAV_DROPDOWN_DIRECTIVES,
   ReplaceDirective,
   SIDEBAR_TOGGLE_DIRECTIVES
-]
+];
 
 // Import routing module
 import { AppRoutingModule } from './app.routing';
@@ -79,6 +54,7 @@ import { AppRoutingModule } from './app.routing';
 // Import 3rd party components
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import {ButtonsModule} from "ngx-bootstrap/buttons";
 
 @NgModule({
   imports: [
@@ -86,12 +62,13 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     AppRoutingModule,
     HttpClientModule,
     BsDropdownModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    ButtonsModule.forRoot(),
+    AppStructureModule
   ],
   declarations: [
     AppComponent,
     ...APP_CONTAINERS,
-    ...APP_COMPONENTS,
     ...APP_DIRECTIVES,
     // ...APP_REQUESTS,
     // ...APP_PIPES,
