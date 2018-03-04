@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { IncomingRequest } from '../../models/incomingRequest';
+import { IncomingRequest } from '../models/incomingRequest';
 import { VisibilityOfRequestDetails } from "../request-list/VisibilityOfRequestDetails";
 
 @Component({

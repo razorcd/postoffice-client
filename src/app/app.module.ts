@@ -1,16 +1,15 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
-import {HttpClientModule} from '@angular/common/http';
 
 import {AppComponent} from './app.component';
-import {FullLayoutComponent, SimpleLayoutComponent} from './containers';
 import {AppRoutingModule} from './app.routing';
 import {SharedModule} from "./shared/shared.module";
 import {AppStructureModule} from "./core/app-structure/app-structure.module";
+import {SimpleLayoutComponent, DashboardLayoutComponent} from "./containers";
 
 const APP_CONTAINERS = [
-  FullLayoutComponent,
+  DashboardLayoutComponent,
   SimpleLayoutComponent
 ];
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { RequestService } from '../services/request.service';
-import { IncomingRequest } from '../../models/incomingRequest';
+import { IncomingRequest } from '../models/incomingRequest';
 import { VisibilityOfRequestDetails } from "./VisibilityOfRequestDetails";
 
 const REQUESTER_INTERVAL:number = 5000; // in ms

@@ -1,4 +1,4 @@
-import {IncomingRequest} from "../../models/incomingRequest";
+import {IncomingRequest} from "../models/incomingRequest";
 import {RequestService} from "./request.service";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from 'rxjs/Observable';

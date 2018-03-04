@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Principal} from "../models/Principal";
+import {Principal} from "./Principal";
 import {CredentialsParam} from "./paramDto/credentials.param";
 
 @Injectable()

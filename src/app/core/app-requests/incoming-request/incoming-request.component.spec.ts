@@ -4,7 +4,7 @@ import {By} from "@angular/platform-browser";
 
 import { IncomingRequestComponent } from './incoming-request.component';
 import {TimeISOPipe} from "../../../../shared/pipes/timeISO.pipe";
-import {IncomingRequest} from "../../models/incomingRequest";
+import {IncomingRequest} from "../models/incomingRequest";
 import {getIncomingRequestFixture} from "../../../testHelpers/fixtures/IncomingRequestFixture";
 
 describe('IncomingRequestComponent', () => {
