@@ -11,6 +11,8 @@ import { CommonModule } from '@angular/common';
 import {RequestService} from "./services/request.service";
 import {SharedModule} from "../../shared/shared.module";
 import {HttpClientModule} from "@angular/common/http";
+import {RequestsRoutingModule} from "./requests-routing.module";
+import {RequestsComponent} from "./requests.component";
 
 @NgModule({
   imports: [
@@ -19,12 +21,14 @@ import {HttpClientModule} from "@angular/common/http";
     HttpClientModule,
     BsDropdownModule,
     ButtonsModule.forRoot(),
-    SharedModule
+    SharedModule,
+    RequestsRoutingModule
   ],
   declarations: [
     IncomingRequestComponent,
     IncomingRequestHeaderComponent,
-    RequestListComponent
+    RequestListComponent,
+    RequestsComponent
   ],
   exports: [
     IncomingRequestComponent,
@@ -38,3 +42,19 @@ import {HttpClientModule} from "@angular/common/http";
   ]
 })
 export class AppRequestsModule { }
+//
+//
+// @NgModule({
+//   imports: [
+//     FormsModule,
+//     RequestsRoutingModule,
+//     BsDropdownModule,
+//     ButtonsModule.forRoot(),
+//     AppRequestsModule
+//   ],
+//   declarations: [
+//     RequestsComponent,
+//   ]
+// })
+// export class RequestsModule { }
+//

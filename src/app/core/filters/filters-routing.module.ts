@@ -6,15 +6,16 @@ import { FiltersComponent } from './filters.component';
 const routes: Routes = [
   {
     path: '',
+    component: FiltersComponent,
     data: {
       title: 'Filters'
     },
     children: [
       {
-        path: 'filters',
-        component: FiltersComponent,
+        path: 'subfilters',
+        // component: SubFiltersComponent,
         data: {
-          title: 'Filters'
+          title: 'SubFilters'
         }
       }
     ]
