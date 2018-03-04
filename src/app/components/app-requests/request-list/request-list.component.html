@@ -1,0 +1,6 @@
+<p>RequestList:</p>
+<incoming-request
+  *ngFor="let ir of incomingRequests" [incomingRequest]="ir"
+  [detailsVisibility]="incomingRequestDetailsVisibility.get(ir.id)"
+  (detailsVisibilityEmitter)="onVisibilityOfRequestDetailsToggle($event)"
+></incoming-request>

@@ -1,18 +1,20 @@
-import {Component} from '@angular/core';
-import {AuthenticationService} from "./services/authentication.service";
-import {Principal} from "./models/Principal";
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  // tslint:disable-next-line
+  selector: 'body',
+  template: '<router-outlet></router-outlet>'
 })
-export class AppComponent {
-  public principal:Principal = null;
+export class AppComponent implements OnInit {
+  constructor(private router: Router) { }
 
-  constructor(private authService:AuthenticationService) {
-    authService.getPrincipal().then((principal:Principal) => {
-      this.principal = principal;
+  ngOnInit() {
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+      window.scrollTo(0, 0)
     });
   }
 }
