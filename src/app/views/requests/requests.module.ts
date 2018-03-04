@@ -5,7 +5,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 import { RequestsComponent } from './requests.component';
 import { RequestsRoutingModule } from './requests-routing.module';
-import {AppRequestsModule} from '../../components/business/app-requests/app-requests.module';
+import {AppRequestsModule} from "../../core/app-requests/app-requests.module";
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import {AppRequestsModule} from '../../components/business/app-requests/app-requ
     ButtonsModule.forRoot(),
     AppRequestsModule
   ],
-  declarations: [ 
+  declarations: [
     RequestsComponent,
    ]
 })

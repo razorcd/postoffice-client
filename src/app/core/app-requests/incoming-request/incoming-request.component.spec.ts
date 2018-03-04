@@ -3,8 +3,8 @@ import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, DebugElement} from "@angular/c
 import {By} from "@angular/platform-browser";
 
 import { IncomingRequestComponent } from './incoming-request.component';
-import {TimeISOPipe} from "../../../../pipes/timeISO.pipe";
-import {IncomingRequest} from "../../../../models/incomingRequest";
+import {TimeISOPipe} from "../../../../shared/pipes/timeISO.pipe";
+import {IncomingRequest} from "../../models/incomingRequest";
 import {getIncomingRequestFixture} from "../../../testHelpers/fixtures/IncomingRequestFixture";
 
 describe('IncomingRequestComponent', () => {

@@ -3,7 +3,7 @@ import {HttpInterceptor, HttpEvent, HttpResponse, HttpHandler, HttpRequest} from
 import {Router} from "@angular/router";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/do';
-import {AuthenticationService} from "./../services/authentication.service";
+import {AuthenticationService} from "../core/authentication/authentication.service";
 
 @Injectable()
 export class UnauthorizedInterceptor implements HttpInterceptor {

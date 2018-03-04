@@ -8,33 +8,33 @@ import {IncomingRequestHeaderComponent} from './incoming-request-header/incoming
 import {RequestListComponent} from './request-list/request-list.component';
 import { CommonModule } from '@angular/common';
 
-import {
-  TimeAgoPipe, 
-  TimeISOPipe
-} from '../../../pipes/index';
+import {RequestService} from "./services/request.service";
+import {SharedModule} from "../../shared/shared.module";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    HttpClientModule,
     BsDropdownModule,
     ButtonsModule.forRoot(),
+    SharedModule
   ],
-  declarations: [ 
+  declarations: [
     IncomingRequestComponent,
     IncomingRequestHeaderComponent,
-    RequestListComponent,
-    TimeAgoPipe, 
-  TimeISOPipe
+    RequestListComponent
   ],
   exports: [
     IncomingRequestComponent,
     IncomingRequestHeaderComponent,
-    RequestListComponent, 
+    RequestListComponent,
     CommonModule,
-    FormsModule,
-    TimeAgoPipe, 
-    TimeISOPipe,
+    FormsModule
+  ],
+  providers: [
+    RequestService
   ]
 })
 export class AppRequestsModule { }
