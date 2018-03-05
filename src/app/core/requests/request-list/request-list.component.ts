@@ -2,8 +2,8 @@ import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { RequestService } from '../services/request.service';
 import { IncomingRequest } from '../models/incomingRequest';
 import { VisibilityOfRequestDetails } from "./VisibilityOfRequestDetails";
+import {environment} from "../../../../environments/environment";
 
-const REQUESTER_INTERVAL:number = 5000; // in ms
 
 @Component({
   selector: 'request-list',
@@ -11,6 +11,9 @@ const REQUESTER_INTERVAL:number = 5000; // in ms
   styleUrls: ['./request-list.component.css']
 })
 export class RequestListComponent implements OnInit, OnDestroy {
+
+  private static REQUESTER_INTERVAL:number = environment.requesterInterval; // in ms
+
   private incomingRequests:IncomingRequest[];
   private incomingRequestDetailsVisibility:Map<String,boolean> = new Map<String, boolean>();
   private setIntervalRequests:any;
@@ -56,7 +59,7 @@ export class RequestListComponent implements OnInit, OnDestroy {
           console.log("Tick: requesting IncomingRequests");
           this.getRequests();
         });
-      }, REQUESTER_INTERVAL);
+      }, RequestListComponent.REQUESTER_INTERVAL);
     });
 
   }

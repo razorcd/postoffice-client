@@ -2,13 +2,14 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Principal} from "./Principal";
 import {CredentialsParam} from "./paramDto/credentials.param";
+import {environment} from "../../../environments/environment";
 
 @Injectable()
 export class AuthenticationService {
 
-  private loginUrl:string = 'http://localhost:8080/login';
-  private logoutUrl:string = 'http://localhost:8080/logout';
-  private principalUrl:string = 'http://localhost:8080/principal';
+  private static LOGIN_URL:string = environment.host + '/login';
+  private static LOGOUT_URL:string = environment.host + '/logout';
+  private static PRINCIPAL_URL:string = environment.host + '/principal';
 
   authenticated:boolean = false;
   principal:Principal = null;
@@ -27,7 +28,7 @@ export class AuthenticationService {
       .set('username', credentials.username)
       .set('password', credentials.password);
 
-    return this.http.post(this.loginUrl,
+    return this.http.post(AuthenticationService.LOGIN_URL,
       body.toString(),
       {
         headers: new HttpHeaders()
@@ -47,7 +48,7 @@ export class AuthenticationService {
   }
 
   logout():Promise<void> {
-    return this.http.get(this.logoutUrl, {withCredentials: true}).toPromise()
+    return this.http.get(AuthenticationService.LOGOUT_URL, {withCredentials: true}).toPromise()
       .then(response => { this.authenticated = false; this.principal = null})
       .catch(error => console.error("Can not logout. ", error))
   }
@@ -68,7 +69,7 @@ export class AuthenticationService {
    * @returns {Promise<Principal>} the current Principal or null
    */
   private requestPrincipal():Promise<Principal> {
-    return this.http.get(this.principalUrl, {
+    return this.http.get(AuthenticationService.PRINCIPAL_URL, {
       headers: new HttpHeaders().set('Accept', 'application/json'),
       withCredentials: true
     })

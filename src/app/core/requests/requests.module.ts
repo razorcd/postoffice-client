@@ -42,19 +42,3 @@ import {RequestsComponent} from "./requests.component";
   ]
 })
 export class AppRequestsModule { }
-//
-//
-// @NgModule({
-//   imports: [
-//     FormsModule,
-//     RequestsRoutingModule,
-//     BsDropdownModule,
-//     ButtonsModule.forRoot(),
-//     AppRequestsModule
-//   ],
-//   declarations: [
-//     RequestsComponent,
-//   ]
-// })
-// export class RequestsModule { }
-//

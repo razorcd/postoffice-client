@@ -1,24 +1,22 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import { catchError, map, tap } from 'rxjs/operators';
-import { IncomingRequest } from '../models/incomingRequest';
-// import { environment } from '../../environments/environment';
+import {Observable} from 'rxjs/Observable';
+import {of} from 'rxjs/observable/of';
+import {IncomingRequest} from '../models/incomingRequest';
+import {environment} from "../../../../environments/environment";
 
 @Injectable()
 export class RequestService {
 
-  private requestUrl = 'http://localhost:8080/requests';
+  private static REQUEST_URL = environment.host + "/requests";
 
 
   constructor(private http: HttpClient) {
-    // console.log(environment);
   }
 
   getRequests():Observable<IncomingRequest[]> {
-    return this.http.get<IncomingRequest[]>(this.requestUrl, {
+    return this.http.get<IncomingRequest[]>(RequestService.REQUEST_URL, {
       withCredentials: true
     })
 //      .pipe(
