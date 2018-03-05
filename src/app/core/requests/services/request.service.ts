@@ -5,13 +5,16 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import { IncomingRequest } from '../models/incomingRequest';
+// import { environment } from '../../environments/environment';
 
 @Injectable()
 export class RequestService {
 
   private requestUrl = 'http://localhost:8080/requests';
 
+
   constructor(private http: HttpClient) {
+    // console.log(environment);
   }
 
   getRequests():Observable<IncomingRequest[]> {

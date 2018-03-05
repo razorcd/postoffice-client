@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  backendApi: {
+  api: {
     host: "http://localhost:8080",
   }
 };
