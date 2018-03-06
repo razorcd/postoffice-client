@@ -19,10 +19,10 @@
               <div class="valid-feedback">
                 <span></span>
               </div>
-              <div class="invalid-feedback animated fadeIn">
-                <div *ngIf="username.errors?.minlength">Username must be minimum 3 characters long.</div>
-                <div *ngIf="username.errors?.pattern">Username must contain only letters, numbers and . _ -</div>
-                <div *ngIf="username.errors?.required">Username is required.</div>
+              <div class="invalid-feedback">
+                <div class="animated fadeIn" *ngIf="username.errors?.minlength">Username must be minimum 3 characters long.</div>
+                <div class="animated fadeIn" *ngIf="username.errors?.pattern">Username must contain only letters, numbers and . _ -</div>
+                <div class="animated fadeIn" *ngIf="username.errors?.required">Username is required.</div>
               </div>
             </div>
 
@@ -37,9 +37,9 @@
               <div class="valid-feedback">
                 <span></span>
               </div>
-              <div class="invalid-feedback animated fadeIn">
-                <div *ngIf="email.errors?.pattern">Please provide a valid email.</div>
-                <div *ngIf="email.errors?.required">Email is required.</div>
+              <div class="invalid-feedback">
+                <div class="animated fadeIn" *ngIf="email.errors?.pattern">Please provide a valid email.</div>
+                <div class="animated fadeIn" *ngIf="email.errors?.required">Email is required.</div>
               </div>
             </div>
 
@@ -54,10 +54,10 @@
               <div class="valid-feedback">
                 <span></span>
               </div>
-              <div class="invalid-feedback animated fadeIn">
-                <div *ngIf="password.errors?.minlength">Password must be minimum 8 characters long.</div>
-                <div *ngIf="password.errors?.pattern">Password must not contain spaces, tabs or new lines.</div>
-                <div *ngIf="password.errors?.required">Password is required.</div>
+              <div class="invalid-feedback">
+                <div class="animated fadeIn" *ngIf="password.errors?.minlength">Password must be minimum 8 characters long.</div>
+                <div class="animated fadeIn" *ngIf="password.errors?.pattern">Password must not contain spaces, tabs or new lines.</div>
+                <div class="animated fadeIn" *ngIf="password.errors?.required">Password is required.</div>
               </div>
             </div>
 
@@ -67,18 +67,18 @@
                 <span class="input-group-text"><i class="icon-lock"></i></span>
               </div>
               <input type="password" class="form-control" placeholder="Confirm Password" formControlName="passwordconfirmation" required
-                     [ngClass]="{ 'is-invalid': (password.value !== passwordconfirmation.value) && (passwordconfirmation.dirty || passwordconfirmation.touched),
-                                  'is-valid': (password.value === passwordconfirmation.value) && (passwordconfirmation.dirty || passwordconfirmation.touched)}">
+                     [ngClass]="{ 'is-invalid': ((password.value !== passwordconfirmation.value) || passwordconfirmation.invalid) && (passwordconfirmation.dirty || passwordconfirmation.touched),
+                                  'is-valid': (password.value === passwordconfirmation.value) && passwordconfirmation.valid && (passwordconfirmation.dirty || passwordconfirmation.touched)}">
               <div class="valid-feedback">
                 <span></span>
               </div>
-              <div class="invalid-feedback animated fadeIn">
-                <div *ngIf="password.value !== passwordconfirmation.value">Confirmed password does not match.</div>
-                <div *ngIf="passwordconfirmation.errors?.required">Confirmed password is required.</div>
+              <div class="invalid-feedback">
+                <div class="animated fadeIn" *ngIf="password.value !== passwordconfirmation.value">Confirmed password does not match.</div>
+                <div class="animated fadeIn" *ngIf="passwordconfirmation.errors?.required">Confirmed password is required.</div>
               </div>
             </div>
 
-            <button type="submit" class="btn btn-block btn-success">Create Account</button>
+            <button type="submit" [disabled]="!registeruserform.valid || (password.value !== passwordconfirmation.value)" class="btn btn-block btn-success">Create Account</button>
           </form>
 
           <!--SSO-->

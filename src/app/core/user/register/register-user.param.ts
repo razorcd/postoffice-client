@@ -1,8 +1,17 @@
+import {JsonProperty} from "json-typescript-mapper";
+
 export class RegisterUserParam {
 
+  @JsonProperty('username')
   private _username:string;
+
+  @JsonProperty('email')
   private _email:string;
+
+  @JsonProperty('plainPassword')
   private _password:string;
+
+  @JsonProperty('plainPasswordConfirmation')
   private _passwordconfirmation:string;
 
 

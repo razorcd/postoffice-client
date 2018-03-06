@@ -30,7 +30,7 @@ describe('IncomingRequestComponent', () => {
   });
 
 
-  it('should create', () => {
+  it('should createUser', () => {
     fixture.detectChanges();
 
     expect(component).toBeTruthy();

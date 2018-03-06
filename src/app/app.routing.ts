@@ -28,6 +28,10 @@ export const routes: Routes = [
         path: 'filters',
         loadChildren: './core/filters/filters.module#FiltersModule'
       },
+      {
+        path: 'profile',
+        loadChildren: './core/profile/profile.module#ProfileModule'
+      },
     ]
   },
   {

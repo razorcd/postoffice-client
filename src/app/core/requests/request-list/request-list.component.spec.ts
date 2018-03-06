@@ -37,7 +37,7 @@ describe('RequestComponent', () => {
   });
 
 
-  it('should create', () => {
+  it('should createUser', () => {
     spyOn(requestService, 'getRequests').and.returnValue(Observable.of([]));
     expect(component).toBeTruthy();
     expect(requestService.getRequests).toHaveBeenCalledTimes(0);  // ngOnInit not executed yet

@@ -5,8 +5,9 @@ import {ButtonsModule} from 'ngx-bootstrap/buttons';
 import {CommonModule} from '@angular/common';
 import {TabsModule} from 'ngx-bootstrap/tabs';
 import {
-  APP_SIDEBAR_NAV, AppBreadcrumbsComponent, AppFooterComponent, AppHeaderComponent, AppSidebarComponent,
-  AppSidebarFooterComponent, AppSidebarFormComponent, AppSidebarHeaderComponent, AppSidebarMinimizerComponent,
+  APP_SIDEBAR_NAV, AppBreadcrumbsComponent, AppFooterComponent, AppHeaderComponent, AppPrincipalIconComponent,
+  AppSidebarComponent, AppSidebarFooterComponent, AppSidebarFormComponent, AppSidebarHeaderComponent,
+  AppSidebarMinimizerComponent,
 } from './index';
 import {RouterModule} from "@angular/router";
 import {SharedModule} from "../../shared/shared.module";
@@ -20,6 +21,7 @@ const APP_COMPONENTS = [
   AppSidebarFormComponent,
   AppSidebarHeaderComponent,
   AppSidebarMinimizerComponent,
+  AppPrincipalIconComponent,
   APP_SIDEBAR_NAV
 ];
 
@@ -35,6 +37,8 @@ const APP_COMPONENTS = [
   ],
   declarations: [
     APP_COMPONENTS,
+  ],
+  providers: [
   ],
   exports: [
     CommonModule,

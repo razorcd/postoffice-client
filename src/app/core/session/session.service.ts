@@ -12,7 +12,7 @@ export class SessionService {
   private static PRINCIPAL_URL:string = environment.host + '/principal';
 
   authenticated:boolean = false;
-  principal:Principal = null;
+  principal:Principal;
 
   constructor(private http:HttpClient) {
   }
@@ -90,7 +90,7 @@ export class SessionService {
       withCredentials: true
     })
     .toPromise().then(response => {
-      this.principal = (response && response['principal']) || null;
+      this.principal = (response && response['principal']);
       return this.principal;
     });
   }

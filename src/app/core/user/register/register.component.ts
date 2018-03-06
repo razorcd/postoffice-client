@@ -4,7 +4,7 @@ import {FormGroup, FormControl, Validators} from "@angular/forms";
 
 import {RegisterUserParam} from "./register-user.param";
 import {Router} from "@angular/router";
-import {UserService} from "./user.service";
+import {UserService} from "./../user.service";
 
 @Component({
   templateUrl: 'register.component.html'
@@ -64,7 +64,7 @@ export class RegisterComponent implements OnInit {
    */
   register() {
     // console.log(this.registeruserform.value)
-    this.userService.create(this.buildRegisterUserParam()).subscribe(
+    this.userService.createUser(this.buildRegisterUserParam()).subscribe(
       (response) => this.router.navigateByUrl("/dashboard"),
       (error) => console.error("Backend error: ", error)
     );

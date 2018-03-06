@@ -3,7 +3,6 @@ import {RouterModule, Routes} from '@angular/router';
 
 import {P404Component} from './404.component';
 import {P500Component} from './500.component';
-import {RegisterComponent} from '../user/register.component';
 
 const routes: Routes = [
   {

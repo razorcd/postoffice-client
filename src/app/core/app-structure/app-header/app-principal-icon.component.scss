@@ -1,0 +1,24 @@
+//TODO: integrate sass variables
+.icon {
+  height: 42px;
+  width: 42px;
+  background-color: #536c79;
+  border-radius: 50%;
+  font-size: 2.0em;
+  display: block;
+  overflow: hidden;
+  text-align: center;
+}
+
+.icon:hover {
+  background: #20a8d8;
+}
+
+.icon span {
+  color: #ffffff;
+  position: relative;
+  bottom: 1px;
+  text-align: center;
+  font-family: sans-serif;
+  font-style: normal;
+}
