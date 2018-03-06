@@ -1,9 +1,10 @@
-import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
-import { RequestService } from '../services/request.service';
-import { IncomingRequest } from '../models/incomingRequest';
-import { VisibilityOfRequestDetails } from "./VisibilityOfRequestDetails";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {RequestService} from '../services/request.service';
+import {IncomingRequest} from '../models/incomingRequest';
+import {VisibilityOfRequestDetails} from "./VisibilityOfRequestDetails";
 import {environment} from "../../../../environments/environment";
-
+import {Observable} from 'rxjs/Rx';
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'request-list',
@@ -16,9 +17,9 @@ export class RequestListComponent implements OnInit, OnDestroy {
 
   private incomingRequests:IncomingRequest[];
   private incomingRequestDetailsVisibility:Map<String,boolean> = new Map<String, boolean>();
-  private setIntervalRequests:any;
+  private intervalRequestsSubscription:Subscription;
 
-  constructor(private requestService: RequestService, private _ngZone: NgZone) { }
+  constructor(private requestService: RequestService) { }
 
   ngOnInit():void {
     this.startRealTimeRequester();
@@ -39,8 +40,8 @@ export class RequestListComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Stores a incomingRequest details visibility by incomingRequest id.
-   * @param {VisibilityOfRequestDetails} the new incomingRequest id and it's visibility
+   * Stores a incomingRequest details panel visibility by incomingRequest id.
+   * @param {VisibilityOfRequestDetails} $event new incomingRequest id and it's visibility
    */
   onVisibilityOfRequestDetailsToggle($event:VisibilityOfRequestDetails):void {
     console.log("VisibilityOfRequestDetails even received: ", $event);
@@ -52,22 +53,15 @@ export class RequestListComponent implements OnInit, OnDestroy {
    */
   private startRealTimeRequester():void {
     this.getRequests();
-
-    this._ngZone.runOutsideAngular(() => { // Changes here will not propagate into your view.
-      this.setIntervalRequests = setInterval(() => {
-        this._ngZone.run(() => { // Run inside the ngZone to trigger change detection.
-          console.log("Tick: requesting IncomingRequests");
-          this.getRequests();
-        });
-      }, RequestListComponent.REQUESTER_INTERVAL);
-    });
-
+    this.intervalRequestsSubscription =  Observable
+      .interval(RequestListComponent.REQUESTER_INTERVAL)
+      .subscribe((itt:number) => this.getRequests());
   }
 
   /**
-   * Stops a continuous requester
+   * Stops a continuous requester by unsubscribing from the continuous interval observable
    */
   private stopRealTimeRequester():void {
-    clearInterval(this.setIntervalRequests);
+    this.intervalRequestsSubscription && this.intervalRequestsSubscription.unsubscribe();
   }
 }

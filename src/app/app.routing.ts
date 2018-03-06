@@ -22,7 +22,7 @@ export const routes: Routes = [
     children: [
       {
         path: 'requests',
-        loadChildren: './core/requests/requests.module#AppRequestsModule'
+        loadChildren: './core/requests/requests.module#RequestsModule'
       },
       {
         path: 'filters',

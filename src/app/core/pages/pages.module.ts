@@ -1,19 +1,26 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
+import {CommonModule} from "@angular/common";
+import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
-import { P404Component } from './404.component';
-import { P500Component } from './500.component';
-import { LoginComponent } from './login.component';
-import { RegisterComponent } from './register.component';
+import {DefaultHttpInterceptorsModule} from "../../httpInterceptors/default-http-interceptors.module";
 
-import { PagesRoutingModule } from './pages-routing.module';
+import {P404Component} from './404.component';
+import {P500Component} from './500.component';
+import {PagesRoutingModule} from './pages-routing.module';
 
 @NgModule({
-  imports: [ PagesRoutingModule ],
+  imports: [
+    PagesRoutingModule,
+    CommonModule,
+    FormsModule,
+    HttpClientModule, DefaultHttpInterceptorsModule, // required everywhere HttpClientModule is used
+  ],
   declarations: [
     P404Component,
     P500Component,
-    LoginComponent,
-    RegisterComponent
+  ],
+  providers: [
   ]
 })
 export class PagesModule { }

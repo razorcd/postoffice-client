@@ -13,7 +13,7 @@ const routes: Routes = [
     children: [
       {
         path: 'subfilters',
-        // component: SubFiltersComponent,
+        redirectTo: "/",// component: SubFiltersComponent,
         data: {
           title: 'SubFilters'
         }

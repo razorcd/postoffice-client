@@ -5,7 +5,7 @@ import {CredentialsParam} from "./paramDto/credentials.param";
 import {environment} from "../../../environments/environment";
 
 @Injectable()
-export class AuthenticationService {
+export class SessionService {
 
   private static LOGIN_URL:string = environment.host + '/login';
   private static LOGOUT_URL:string = environment.host + '/logout';
@@ -18,17 +18,18 @@ export class AuthenticationService {
   }
 
   /**
-   * Tries to login using the provided credentials. Then sets this.authenticated flag, then returns Promise.
+   * Creates a new http session in backend server using the provided credentials.
+   * Then sets this.authenticated flag. Then returns Promise.
    *
    * @param {CredentialsParam} credentials for the authentication
    * @returns {Promise<boolean>} if authenticated or not
    */
-  login(credentials:CredentialsParam):Promise<boolean> {
+  create(credentials:CredentialsParam):Promise<boolean> {
     const body = new HttpParams()
       .set('username', credentials.username)
       .set('password', credentials.password);
 
-    return this.http.post(AuthenticationService.LOGIN_URL,
+    return this.http.post(SessionService.LOGIN_URL,
       body.toString(),
       {
         headers: new HttpHeaders()
@@ -39,37 +40,52 @@ export class AuthenticationService {
       .then(response => {
         this.authenticated = true;
         console.log("Response: ", response);
-      })
-      .catch(error => {
+        console.log("authenticated: ", this.authenticated);
+        return this.authenticated;
+      }).catch( error => {
         this.authenticated = false;
         console.log("Error response: ", error);
-      })
-      .then(() => {return this.authenticated});
+        console.log("authenticated: ", this.authenticated);
+        return this.authenticated;
+      });
+      // .then(() => {return this.authenticated});
   }
 
-  logout():Promise<void> {
-    return this.http.get(AuthenticationService.LOGOUT_URL, {withCredentials: true}).toPromise()
-      .then(response => { this.authenticated = false; this.principal = null})
-      .catch(error => console.error("Can not logout. ", error))
-  }
-
-  //TODO: move to facade class
   /**
-   * Returns a Promise of current Principal
-   *
-   * @returns {Promise<Principal>} current logged-in Principal
+   * Deletes current session in backend server. Then resets session properties.
+   * @returns nothing
    */
-  getPrincipal():Promise<Principal> {
-    return new Promise((resolve, reject) => resolve(this.principal)) || this.requestPrincipal();
+  delete():Promise<void> {
+    return this.http.get(SessionService.LOGOUT_URL, {withCredentials: true}).toPromise()
+      .then(() => this.reset());
   }
 
   /**
-   * Requests the current logged-in Principal, stores it in this.principal, then returns Promise.
+   * Resets current session properties by removing any user data.
+   * @returns nothing
+   */
+  reset():void {
+    this.authenticated = false;
+    this.principal = null;
+  }
+
+  /**
+   * Returns current Principal
+   * @returns {Principal} current logged-in Principal
+   */
+  getPrincipal():Principal {
+    return this.principal;
+    // return new Promise((resolve, reject) => resolve(this.principal)) || this.requestPrincipal();
+  }
+
+  /**
+   * Requests the current logged-in Principal from backend server.
+   * Then stores it in this.principal. Then returns Promise.
    *
    * @returns {Promise<Principal>} the current Principal or null
    */
-  private requestPrincipal():Promise<Principal> {
-    return this.http.get(AuthenticationService.PRINCIPAL_URL, {
+  public requestPrincipal():Promise<Principal> {
+    return this.http.get(SessionService.PRINCIPAL_URL, {
       headers: new HttpHeaders().set('Accept', 'application/json'),
       withCredentials: true
     })

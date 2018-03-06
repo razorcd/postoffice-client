@@ -11,7 +11,6 @@ export class RequestService {
 
   private static REQUEST_URL = environment.host + "/requests";
 
-
   constructor(private http: HttpClient) {
   }
 

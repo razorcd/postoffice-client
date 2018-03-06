@@ -17,18 +17,18 @@ export const navigation = [
     name: 'Extras',
   },
   {
-    name: 'Pages',
-    url: '/pages',
+    name: 'Auth',
+    url: '',
     icon: 'icon-star',
     children: [
       {
         name: 'Login',
-        url: '/pages/login',
+        url: '/login',
         icon: 'icon-star'
       },
       {
         name: 'Register',
-        url: '/pages/register',
+        url: '/register',
         icon: 'icon-star'
       },
       {

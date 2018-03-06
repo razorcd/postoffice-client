@@ -4,7 +4,6 @@ import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {ButtonsModule} from 'ngx-bootstrap/buttons';
 import {CommonModule} from '@angular/common';
 import {TabsModule} from 'ngx-bootstrap/tabs';
-// Import components
 import {
   APP_SIDEBAR_NAV, AppBreadcrumbsComponent, AppFooterComponent, AppHeaderComponent, AppSidebarComponent,
   AppSidebarFooterComponent, AppSidebarFormComponent, AppSidebarHeaderComponent, AppSidebarMinimizerComponent,
