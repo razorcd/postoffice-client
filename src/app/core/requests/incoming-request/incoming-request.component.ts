@@ -21,7 +21,7 @@ export class IncomingRequestComponent implements OnInit {
   }
 
   /**
-   * Toggles the visibility of the details of current incomingRequest
+   * Toggles the visibility of the details for current incomingRequest
    * @param {String} id of incomingRequest
    */
   toggleDetailsVisibility(id:String) {
@@ -29,4 +29,19 @@ export class IncomingRequestComponent implements OnInit {
     let tempDetailsVisible:VisibilityOfRequestDetails = new VisibilityOfRequestDetails(id, this.detailsVisibility);
     this.detailsVisibilityEmitter.emit(tempDetailsVisible);
   }
+
+
+
+  isCollapsed: boolean = false;
+
+  collapsed(event: any): void {
+    console.log(event);
+  }
+
+  expanded(event: any): void {
+    console.log(event);
+  }
+
+
+
 }

@@ -1,0 +1,15 @@
+
+<a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">{{notificationsCount}}</span></a>
+
+<div class='notification-container'>
+  <div class="animated fadeIn" *ngFor='let n of notifications'>
+    <alert [type]="n.type">
+      <h4 class="alert-heading" *ngIf="n.title">{{n.title}}</h4>
+      {{n.message}}
+    </alert>
+  </div>
+</div>
+
+
+
+

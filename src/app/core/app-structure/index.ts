@@ -7,3 +7,4 @@ export * from './app-sidebar-form/index';
 export * from './app-sidebar-header/index';
 export * from './app-sidebar-minimizer/index';
 export * from './app-sidebar-nav/index';
+export * from './app-notifications/index';

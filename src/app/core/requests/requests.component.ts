@@ -12,4 +12,15 @@ export class RequestsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
+  isCollapsed: boolean = false;
+
+  collapsed(event: any): void {
+    console.log(event);
+  }
+
+  expanded(event: any): void {
+    console.log(event);
+  }
 }

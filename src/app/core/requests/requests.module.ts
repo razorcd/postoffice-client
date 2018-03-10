@@ -8,6 +8,7 @@ import {IncomingRequestComponent} from './incoming-request/incoming-request.comp
 import {IncomingRequestHeaderComponent} from './incoming-request-header/incoming-request-header.component';
 import {RequestListComponent} from './request-list/request-list.component';
 import {CommonModule} from '@angular/common';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 import {RequestService} from "./services/request.service";
 import {SharedModule} from "../../shared/shared.module";
@@ -20,6 +21,7 @@ import {DefaultHttpInterceptorsModule} from "../../httpInterceptors/default-http
     CommonModule,
     FormsModule,
     HttpClientModule, DefaultHttpInterceptorsModule, // required everywhere HttpClientModule is used
+    CollapseModule,
     BsDropdownModule,
     ButtonsModule.forRoot(),
     SharedModule,
