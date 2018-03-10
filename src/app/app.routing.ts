@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Import Containers
 import {
-  FullLayoutComponent,
+  DashboardLayoutComponent,
   SimpleLayoutComponent
 } from './containers';
 
@@ -14,19 +14,23 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: '',
-    component: FullLayoutComponent,
+    path: 'dashboard',
+    component: DashboardLayoutComponent,
     data: {
       title: 'Home'
     },
     children: [
       {
         path: 'requests',
-        loadChildren: './views/requests/requests.module#RequestsModule'
+        loadChildren: './core/requests/requests.module#RequestsModule'
       },
       {
         path: 'filters',
-        loadChildren: './views/filters/filters.module#FiltersModule'
+        loadChildren: './core/filters/filters.module#FiltersModule'
+      },
+      {
+        path: 'profile',
+        loadChildren: './core/profile/profile.module#ProfileModule'
       },
     ]
   },
@@ -39,7 +43,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: './views/pages/pages.module#PagesModule',
+        loadChildren: './core/pages/pages.module#PagesModule',
       }
     ]
   }

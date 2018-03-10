@@ -1,2 +1,2 @@
-export * from './full-layout';
+export * from './dashboard-layout';
 export * from './simple-layout';

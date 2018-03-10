@@ -1,12 +1,12 @@
 export const navigation = [
   {
     name: 'Requests',
-    url: '/requests',
+    url: '/dashboard/requests',
     icon: 'icon-speedometer'
   },
   {
     name: 'Filters',
-    url: '/filters',
+    url: '/dashboard/filters',
     icon: 'icon-pencil'
   },
   {
@@ -17,18 +17,18 @@ export const navigation = [
     name: 'Extras',
   },
   {
-    name: 'Pages',
-    url: '/pages',
+    name: 'Auth',
+    url: '',
     icon: 'icon-star',
     children: [
       {
         name: 'Login',
-        url: '/pages/login',
+        url: '/login',
         icon: 'icon-star'
       },
       {
         name: 'Register',
-        url: '/pages/register',
+        url: '/register',
         icon: 'icon-star'
       },
       {
