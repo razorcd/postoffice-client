@@ -10,7 +10,7 @@ import {SessionService} from "../../session/session.service";
 @Injectable()
 export class RequestService {
 
-  private REQUEST_URL = environment.host + `/user/${this.sessionService.getPrincipal().username}/requests`;
+  private REQUEST_URL = environment.host + `/users/${this.sessionService.getPrincipal().username}/incomingrequests`;
 
   constructor(private http: HttpClient, private sessionService:SessionService) {
   }
