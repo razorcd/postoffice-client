@@ -13,11 +13,11 @@ export class NotificationsService {
   private notificationObserver:Observer<Notification>;
 
   constructor() {
+    console.log("NotificationService initialised.");
     this.notificationObservable = <Observable<Notification>>new Observable((observer:Observer<Notification>) => {
       this.notificationObserver = observer;
     });
   }
-
 
   getNotificationObservable(): Observable<Notification> {
     return this.notificationObservable;

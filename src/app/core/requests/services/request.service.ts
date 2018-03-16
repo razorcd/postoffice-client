@@ -5,17 +5,18 @@ import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 import {IncomingRequest} from '../models/incomingRequest';
 import {environment} from "../../../../environments/environment";
+import {SessionService} from "../../session/session.service";
 
 @Injectable()
 export class RequestService {
 
-  private static REQUEST_URL = environment.host + "/requests";
+  private REQUEST_URL = environment.host + `/user/${this.sessionService.getPrincipal().username}/requests`;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private sessionService:SessionService) {
   }
 
   getRequests():Observable<IncomingRequest[]> {
-    return this.http.get<IncomingRequest[]>(RequestService.REQUEST_URL, {
+    return this.http.get<IncomingRequest[]>(this.REQUEST_URL, {
       withCredentials: true
     })
 //      .pipe(

@@ -14,7 +14,8 @@ export class AppHeaderComponent {
 
   logout() {
     this.sessionService.delete().then(
-      () => this.router.navigateByUrl("/login"),
+      // () => this.router.navigate("/login"),
+      () => window.location.replace("/"),
       () => console.log("Can not LOGOUT!")
     );
   }

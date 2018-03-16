@@ -8,10 +8,13 @@ export class User {
   @JsonProperty("email")
   private _email:string;
 
+  @JsonProperty("pathIdentifier")
+  private _pathIdentifier:string
 
-  constructor(username?: string, email?: string) {
+  constructor(username?: string, email?: string, pathIdentifier?: string) {
     this._username = username;
     this._email = email;
+    this._pathIdentifier = pathIdentifier;
   }
 
   get username(): string {
@@ -28,5 +31,13 @@ export class User {
 
   set email(value: string) {
     this._email = value;
+  }
+
+  get pathIdentifier(): string {
+    return this._pathIdentifier;
+  }
+
+  set pathIdentifier(value: string) {
+    this._pathIdentifier = value;
   }
 }

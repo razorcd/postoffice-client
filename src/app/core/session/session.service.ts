@@ -11,8 +11,8 @@ export class SessionService {
   private static LOGOUT_URL:string = environment.host + '/logout';
   private static PRINCIPAL_URL:string = environment.host + '/principal';
 
-  authenticated:boolean = false;
-  principal:Principal;
+  private authenticated:boolean = false;
+  private principal:Principal;
 
   constructor(private http:HttpClient) {
   }
@@ -73,9 +73,18 @@ export class SessionService {
    * Returns current Principal
    * @returns {Principal} current logged-in Principal
    */
+  //TODO: lazy load
   getPrincipal():Principal {
     return this.principal;
     // return new Promise((resolve, reject) => resolve(this.principal)) || this.requestPrincipal();
+  }
+
+  /**
+   * Returns if authenticated
+   * @returns {boolean}
+   */
+  isAuthenticated():boolean {
+    return this.authenticated;
   }
 
   /**
