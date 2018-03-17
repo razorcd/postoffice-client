@@ -16,9 +16,7 @@ export class RequestService {
   }
 
   getRequests():Observable<IncomingRequest[]> {
-    return this.http.get<IncomingRequest[]>(this.REQUEST_URL, {
-      withCredentials: true
-    })
+    return <Observable<IncomingRequest[]>>this.http.get(this.REQUEST_URL, {withCredentials: true})
 //      .pipe(
 //        tap(request => this.log('fetched requests')),
 //        catchError(this.handleError('gotRequests', []))

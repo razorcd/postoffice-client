@@ -16,7 +16,7 @@ describe("TimeAgoPipe", () => {
   });
 
   it("should return humanised time difference since present", () => {
-    expect(timeAgoPipe.transform(fixedCurrentTime.valueOf())).toBe("a few seconds ago");
+    expect(timeAgoPipe.transform(<number>fixedCurrentTime.valueOf())).toBe("a few seconds ago");
     expect(timeAgoPipe.transform(fixedCurrentTime.valueOf() - 60000)).toBe("a minute ago");
     expect(timeAgoPipe.transform(fixedCurrentTime.valueOf() - 60000*60)).toBe("an hour ago");
     expect(timeAgoPipe.transform(fixedCurrentTime.valueOf() - 60000*60*24)).toBe("a day ago");

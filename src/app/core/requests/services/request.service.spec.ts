@@ -3,15 +3,19 @@ import {RequestService} from "./request.service";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from 'rxjs/Observable';
 import "rxjs/add/observable/of";
+import {SessionService} from "../../session/session.service";
+import {Principal} from "../../session/Principal";
 
 describe('RequestService', () => {
   let service: RequestService;
   let incomingRequestsList: IncomingRequest[];
 
   let fakeHttp: HttpClient = new HttpClient(null);
+  let sessionServiceMock:SessionService = new SessionService(fakeHttp);
 
   beforeEach(() => {
-    service = new RequestService(fakeHttp);
+    spyOn(sessionServiceMock, "getPrincipal").and.returnValue(new Principal());
+    service = new RequestService(fakeHttp, sessionServiceMock);
     incomingRequestsList = [new IncomingRequest(), new IncomingRequest()];
   });
 
