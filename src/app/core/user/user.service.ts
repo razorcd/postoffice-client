@@ -2,8 +2,10 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {RegisterUserParam} from "./register/register-user.param";
 import {environment} from "../../../environments/environment";
-import {Observable} from "rxjs/Observable";
 import {deserialize, serialize} from "json-typescript-mapper";
+import {Observable} from "rxjs/Observable";
+import 'rxjs/add/operator/map';
+
 import {User} from "./user";
 
 

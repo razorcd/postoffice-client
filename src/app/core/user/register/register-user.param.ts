@@ -15,7 +15,11 @@ export class RegisterUserParam {
   private _passwordconfirmation:string;
 
 
-  constructor() {
+  constructor(username?: string, email?: string, password?: string, passwordconfirmation?: string) {
+    this._username = username;
+    this._email = email;
+    this._password = password;
+    this._passwordconfirmation = passwordconfirmation;
   }
 
   get username(): string {

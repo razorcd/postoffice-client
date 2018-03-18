@@ -11,16 +11,17 @@ import {UserService} from "./../user.service";
 })
 export class RegisterComponent implements OnInit {
 
-  private registeruserform:FormGroup;
-  private username: FormControl;
-  private email: FormControl;
-  private password: FormControl;
-  private passwordconfirmation: FormControl;
+  registeruserform:FormGroup;
+  username: FormControl;
+  email: FormControl;
+  password: FormControl;
+  passwordconfirmation: FormControl;
 
   constructor(private userService:UserService, private router:Router) { }
 
-  //TODO: add vlidationEqual directive
-  //TODO: async call on username and email uniqueness
+  //TODO: add validationEqual directive
+  //TODO: backend async call on username and email uniqueness
+
   ngOnInit() {
     this.createFormControls();
     this.createForm();

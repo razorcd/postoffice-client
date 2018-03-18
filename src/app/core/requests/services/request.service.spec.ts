@@ -19,7 +19,6 @@ describe('RequestService', () => {
     incomingRequestsList = [new IncomingRequest(), new IncomingRequest()];
   });
 
-
   it('can instantiate service when inject service', () => {
     expect(service instanceof RequestService).toBe(true);
   });

@@ -3,8 +3,9 @@ import {RequestService} from '../services/request.service';
 import {IncomingRequest} from '../models/incomingRequest';
 import {VisibilityOfRequestDetails} from "./VisibilityOfRequestDetails";
 import {environment} from "../../../../environments/environment";
-import {Observable} from 'rxjs/Rx';
 import {Subscription} from "rxjs/Subscription";
+import {Observable} from "rxjs/Observable";
+import 'rxjs/add/observable/interval';
 
 @Component({
   selector: 'request-list',
